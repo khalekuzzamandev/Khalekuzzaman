@@ -9,8 +9,6 @@ const topSkills = [
   {
     title: 'Frontend',
     subtitle: 'Modern UI Development',
-    description:
-      'Building responsive and interactive user interfaces with modern frontend technologies.',
     image: '/frontent.png',
     skills: [
       'HTML5',
@@ -33,8 +31,6 @@ const topSkills = [
   {
     title: 'Backend',
     subtitle: 'Server & API Development',
-    description:
-      'Creating secure APIs, authentication systems and scalable server-side applications.',
     image: '/backend.png',
     skills: [
       'Node.js',
@@ -57,8 +53,6 @@ const topSkills = [
   {
     title: 'Database',
     subtitle: 'Data Management',
-    description:
-      'Designing and managing reliable databases for modern full-stack applications.',
     image: '/database.png',
     skills: [
       'MongoDB',
@@ -207,10 +201,7 @@ const SkillCard = ({ item, index }) => {
             </motion.div>
           </div>
 
-          {/* Description */}
-          <p className="mt-3 max-w-[95%] text-[11px] leading-6 text-gray-500">
-            {item.description}
-          </p>
+        
 
           {/* Divider */}
           <div className="relative my-5 h-px bg-white/[0.07]">
@@ -341,7 +332,7 @@ const Skill = () => {
         </motion.div>
 
         {/* ================= TOP CARDS ================= */}
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-1">
           {topSkills.map((item, index) => (
             <SkillCard
               key={item.title}
