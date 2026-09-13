@@ -108,161 +108,133 @@ const SkillCard = ({ item, index }) => {
         delay: index * 0.1,
         ease: 'easeOut',
       }}
-      className="group relative h-full"
+      className="group relative"
     >
       {/* Outer Glow */}
       <div className="pointer-events-none absolute -inset-[1px] rounded-[25px] bg-gradient-to-br from-orange-500/30 via-transparent to-orange-700/20 opacity-0 blur-sm transition duration-700 group-hover:opacity-100" />
 
       {/* Card */}
-      <div className="relative h-full overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#0b0d0c] shadow-[0_15px_50px_rgba(0,0,0,0.35)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-orange-500/30 group-hover:shadow-[0_25px_70px_rgba(234,88,12,0.15)]">
+      <div className="relative overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#0b0d0c] shadow-[0_15px_50px_rgba(0,0,0,0.35)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-orange-500/30 group-hover:shadow-[0_25px_70px_rgba(234,88,12,0.15)]">
 
         {/* Top Accent */}
-        <div className="absolute left-0 right-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-orange-500/70 to-transparent opacity-60" />
+        <div className="absolute left-0 right-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-orange-500/70 to-transparent" />
 
         {/* Background Glow */}
         <div className="pointer-events-none absolute -right-24 -top-24 h-52 w-52 rounded-full bg-orange-600/10 blur-[80px] transition duration-700 group-hover:bg-orange-600/20" />
 
-        <div className="pointer-events-none absolute -bottom-28 -left-20 h-48 w-48 rounded-full bg-orange-700/[0.05] blur-[80px]" />
+        <div className="relative grid items-center gap-8 p-5 sm:p-6 lg:grid-cols-[280px_1fr]">
 
-        {/* ================= HEADER ================= */}
-        <div className="relative h-[125px] overflow-hidden">
+          {/* ================= LEFT SIDE ================= */}
+          <div className="relative flex items-center gap-5 lg:min-h-[150px]">
 
-          {/* Background Grid */}
-          <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:25px_25px]" />
+            {/* Icon Glow */}
+            <div className="absolute left-2 h-24 w-24 rounded-full bg-orange-500/10 blur-2xl" />
 
-          {/* Header Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-orange-500/[0.05] via-transparent to-[#0b0d0c]" />
+            {/* Icon */}
+            <motion.div
+              whileHover={{ rotate: 4, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.045] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+            >
+              <div className="absolute inset-[1px] rounded-2xl border border-orange-500/0 transition duration-500 group-hover:border-orange-500/30" />
 
-          {/* Image Glow */}
-          <div className="absolute left-4 top-5 h-20 w-20 rounded-2xl bg-orange-500/10 blur-2xl transition duration-500 group-hover:bg-orange-500/20" />
+              <Image
+                src={item.image}
+                alt={`${item.title} icon`}
+                width={56}
+                height={56}
+                className="relative h-12 w-12 object-contain transition duration-500 group-hover:scale-110"
+              />
+            </motion.div>
 
-          {/* Image Box */}
-          <motion.div
-            whileHover={{ rotate: 3, scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="absolute left-5 top-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.045] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl"
-          >
-            <div className="absolute inset-[1px] rounded-2xl border border-orange-500/0 transition duration-500 group-hover:border-orange-500/30" />
-
-            <Image
-              src={item.image}
-              alt={`${item.title} icon`}
-              width={56}
-              height={56}
-              className="relative h-10 w-10 object-contain transition duration-500 group-hover:scale-110"
-            />
-          </motion.div>
-
-          {/* Number */}
-          <div className="absolute right-5 top-5 flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(234,88,12,0.8)]" />
-
-            <span className="text-[10px] font-bold tracking-[0.25em] text-white/25">
-              0{index + 1}
-            </span>
-          </div>
-
-          {/* Corner Decoration */}
-          <div className="absolute bottom-4 right-5 h-8 w-8 rounded-full border border-orange-500/10" />
-        </div>
-
-        {/* ================= CONTENT ================= */}
-        <div className="relative px-5 pb-6 sm:px-6">
-
-          {/* Title */}
-          <div className="flex items-start justify-between gap-4">
-
+            {/* Title */}
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="h-[1px] w-5 bg-orange-500" />
 
-                <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-orange-500">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-orange-500">
                   {item.subtitle}
                 </p>
               </div>
 
-              <h3 className="text-[27px] font-black tracking-tight text-white">
+              <h3 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
                 {item.title}
               </h3>
+
+              <div className="mt-3 flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+
+                <span className="text-[10px] font-medium text-gray-600">
+                  {item.skills.length} Skills
+                </span>
+              </div>
             </div>
 
-            {/* Arrow */}
-            <motion.div
-              whileHover={{
-                rotate: 45,
-                scale: 1.1,
-              }}
-              className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] shadow-inner transition duration-300 group-hover:border-orange-500/30 group-hover:bg-orange-500/10"
-            >
-              <ArrowUpRight
-                size={18}
-                className="text-gray-500 transition duration-300 group-hover:text-orange-500"
-              />
-            </motion.div>
-          </div>
-
-        
-
-          {/* Divider */}
-          <div className="relative my-5 h-px bg-white/[0.07]">
-            <div className="absolute left-0 top-0 h-px w-16 bg-orange-500/50" />
-          </div>
-
-          {/* Skills Header */}
-          <div className="mb-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Sparkles
-                size={12}
-                className="text-orange-500"
-              />
-
-              <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-gray-500">
-                Technologies
-              </span>
-            </div>
-
-            <span className="text-[9px] text-gray-700">
-              {item.skills.length} Skills
+            {/* Number */}
+            <span className="absolute right-0 top-0 text-[10px] font-bold tracking-[0.25em] text-white/20">
+              0{index + 1}
             </span>
           </div>
 
-          {/* Skills */}
-          <div className="flex max-h-[135px] flex-wrap content-start gap-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-orange-500/20">
-            {item.skills.map((skill, skillIndex) => (
-              <motion.span
-                key={skill}
-                initial={{
-                  opacity: 0,
-                  scale: 0.9,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.25,
-                  delay: index * 0.05 + skillIndex * 0.015,
-                }}
-                whileHover={{
-                  y: -2,
-                  scale: 1.03,
-                }}
-                className="cursor-default rounded-lg border border-white/[0.07] bg-white/[0.025] px-2.5 py-1.5 text-[9px] font-medium text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-white hover:shadow-[0_5px_18px_rgba(234,88,12,0.1)]"
-              >
-                {skill}
-              </motion.span>
-            ))}
+          {/* Vertical Divider */}
+          <div className="hidden h-full w-px bg-white/[0.07] lg:absolute lg:left-[300px] lg:block" />
+
+          {/* ================= RIGHT SIDE ================= */}
+          <div className="relative lg:pl-6">
+
+            {/* Skills Header */}
+            <div className="mb-4 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Sparkles
+                  size={13}
+                  className="text-orange-500"
+                />
+
+                <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-gray-500">
+                  Technologies & Skills
+                </span>
+              </div>
+
+              <span className="text-[9px] text-gray-700">
+                {item.skills.length} Skills
+              </span>
+            </div>
+
+            {/* Skills */}
+            <div className="flex max-h-[150px] flex-wrap content-start gap-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-orange-500/20">
+              {item.skills.map((skill, skillIndex) => (
+                <motion.span
+                  key={skill}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.9,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.25,
+                    delay: index * 0.05 + skillIndex * 0.015,
+                  }}
+                  whileHover={{
+                    y: -2,
+                    scale: 1.03,
+                  }}
+                  className="cursor-default rounded-lg border border-white/[0.07] bg-white/[0.025] px-3 py-2 text-[10px] font-medium text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-white hover:shadow-[0_5px_18px_rgba(234,88,12,0.1)]"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Bottom Line */}
         <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-orange-700 via-orange-500 to-transparent transition-all duration-700 group-hover:w-full" />
-
-        {/* Bottom Glow */}
-        <div className="pointer-events-none absolute bottom-0 left-1/2 h-16 w-2/3 -translate-x-1/2 bg-orange-500/10 opacity-0 blur-2xl transition duration-700 group-hover:opacity-100" />
       </div>
     </motion.div>
   );
