@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -59,8 +58,7 @@ const topSkills = [
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
       { name: 'React.js', icon: FaReact, color: '#61DAFB' },
       { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
-      { name: 'DaisyUI', icon: SiDaisyui, color: '#5A0EF8' },
+     
     ],
   },
 
@@ -76,8 +74,7 @@ const topSkills = [
       { name: 'JWT', icon: SiJsonwebtokens, color: '#FFFFFF' },
       { name: 'Better Auth', icon: FaDatabase, color: '#8B5CF6' },
       { name: 'Authentication', icon: FaDatabase, color: '#F59E0B' },
-      { name: 'Authorization', icon: FaDatabase, color: '#EF4444' },
-      { name: 'CRUD', icon: FaDatabase, color: '#22C55E' },
+     
     ],
   },
 
@@ -93,8 +90,7 @@ const topSkills = [
       { name: 'Prisma', icon: SiPrisma, color: '#FFFFFF' },
       { name: 'Mongoose', icon: FaDatabase, color: '#880000' },
       { name: 'SQL', icon: FaDatabase, color: '#F29111' },
-      { name: 'NoSQL', icon: FaDatabase, color: '#47A248' },
-      { name: 'Database Design', icon: FaDatabase, color: '#3B82F6' },
+    
     ],
   },
 ];
@@ -168,7 +164,7 @@ const SkillCard = ({ item, index }) => {
 
               <Image
                 src={item.image}
-                alt={`${ item.title } icon`}
+                alt={`${item.title} icon`}
                 width={58}
                 height={58}
                 className="relative h-14 w-14 object-contain transition-transform duration-500 group-hover:scale-110"
@@ -189,7 +185,7 @@ const SkillCard = ({ item, index }) => {
           </div>
 
           <div className="flex items-center justify-between">
-            <h3 className="text-3xl font-black tracking-tight text-white">
+            <h3 className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400 bg-clip-text text-2xl font-black tracking-tight text-transparent transition-all duration-500 group-hover:to-[#00adef] sm:text-3xl lg:text-4xl">
               {item.title}
             </h3>
 
@@ -201,15 +197,7 @@ const SkillCard = ({ item, index }) => {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center gap-3">
-            <div className="h-px flex-1 bg-white/[0.07]" />
-
-            <span className="rounded-full border border-white/[0.07] bg-white/[0.025] px-3 py-1 text-[9px] font-semibold uppercase tracking-wider text-gray-500 transition-all duration-300 group-hover:border-[#DC2F02]/30 group-hover:text-[#DC2F02]">
-              {item.skills.length} Skills
-            </span>
-
-            <div className="h-px flex-1 bg-white/[0.07]" />
-          </div>
+         
         </div>
 
         <div className="relative flex-1 border-t border-white/[0.06] px-6 py-6 sm:px-7">
@@ -246,7 +234,7 @@ const SkillCard = ({ item, index }) => {
                     duration: 0.3,
                     delay: index * 0.05 + skillIndex * 0.025,
                   }}
-                  className="group/skill flex cursor-default items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#DC2F02]/50 hover:bg-[#DC2F02]/[0.08] hover:shadow-[0_5px_20px_rgba(220,47,2,0.10)]"
+                  className="group/skill flex cursor-default items-center gap-3 rounded-xl border border-white/[0.06] shadow-2xl bg-[#131620] px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#f94144]/50 hover:bg-[#DC2F02]/[0.08] hover:shadow-[0_5px_20px_rgba(220,47,2,0.10)]"
                 >
                   <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.04] transition-all duration-300 group-hover/skill:bg-[#DC2F02]/10">
                     <Icon
@@ -258,7 +246,7 @@ const SkillCard = ({ item, index }) => {
                     />
                   </div>
 
-                  <span className="truncate text-[10px] font-medium text-gray-400 transition-colors duration-300 group-hover/skill:text-white">
+                  <span className="truncate text-xs font-bold text-gray-400 transition-colors duration-300 group-hover/skill:text-white xl:text-sm">
                     {skill.name}
                   </span>
                 </motion.div>
@@ -409,7 +397,7 @@ const Skill = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white sm:text-3xl">
+                  <h3 className="text-2xl font-black text-gray-300 sm:text-3xl">
                     Tools & Technologies
                   </h3>
                 </div>
@@ -463,7 +451,7 @@ const Skill = () => {
                         className="shrink-0 transition-all duration-300 group-hover/tool:scale-110"
                       />
 
-                      <span className="truncate text-[10px] font-medium text-gray-400 transition-colors duration-300 group-hover/tool:text-white">
+                      <span className="truncate text-xs font-bold text-gray-400 transition-colors duration-300 group-hover/tool:text-white xl:text-sm">
                         {tool.name}
                       </span>
                     </motion.div>
