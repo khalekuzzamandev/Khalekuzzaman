@@ -258,13 +258,12 @@ const Navbar = () => {
                   }
                   className={`relative w-fit text-sm font-medium transition duration-300 ${isActive
                       ? "text-[#DC2F02]"
-                      : "text-gray-400 hover:text-[#DC2F02]"
+                      : "text-gray-300 hover:text-[#DC2F02]"
                     }`}
                 >
                   {item.name}
 
                   {/* Mobile active indicator */}
-
                   <span
                     className={`absolute -bottom-2 left-0 h-[2px] bg-[#DC2F02] transition-all duration-300 ${isActive
                         ? "w-full"
@@ -294,7 +293,6 @@ const Navbar = () => {
             {/* =========================
                 MOBILE HIRE ME
             ========================= */}
-
             <Link
               href="#contact"
               onClick={() =>
