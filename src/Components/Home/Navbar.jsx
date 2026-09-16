@@ -303,7 +303,6 @@ const Navbar = () => {
               className="flex w-fit items-center gap-2 rounded-md bg-[#DC2F02] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-[#ef3b0a] hover:shadow-[0_0_20px_rgba(220,47,2,0.3)]"
             >
               Hire Me
-
               <ArrowRight size={17} />
             </Link>
 

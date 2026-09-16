@@ -18,8 +18,6 @@ import {
   MdArrowOutward,
 } from 'react-icons/md';
 
-
-
 const socials = [
   {
     icon: FaGithub,

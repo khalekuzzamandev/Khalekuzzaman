@@ -45,7 +45,6 @@ const About = () => {
       className="relative overflow-hidden bg-[#080808] py-16 text-white"
     >
       {/* ================= BACKGROUND ================= */}
-
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[-180px] top-[8%] h-[400px] w-[400px] rounded-full bg-[#DC2F02]/10 blur-[130px]" />
 
@@ -58,7 +57,6 @@ const About = () => {
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
         {/* ================= HEADER ================= */}
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

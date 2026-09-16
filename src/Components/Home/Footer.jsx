@@ -11,7 +11,6 @@ import {
   FaReact,
   FaNodeJs,
 } from 'react-icons/fa';
-
 import {
   SiNextdotjs,
   SiMongodb,

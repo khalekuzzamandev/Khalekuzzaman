@@ -450,7 +450,6 @@ const Skill = () => {
                         }}
                         className="shrink-0 transition-all duration-300 group-hover/tool:scale-110"
                       />
-
                       <span className="truncate text-xs font-bold text-gray-400 transition-colors duration-300 group-hover/tool:text-white xl:text-sm">
                         {tool.name}
                       </span>
