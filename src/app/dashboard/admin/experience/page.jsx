@@ -1,5 +1,6 @@
 "use client";
 
+import { createExperience } from "@/lib/actions/expericence";
 import React, { useState } from "react";
 
 const Experience = () => {
@@ -27,10 +28,10 @@ const Experience = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    console.log("Experience Data:", formData);
+    const createExperience=await createExperience(formData)
   };
 
   const inputClass =
