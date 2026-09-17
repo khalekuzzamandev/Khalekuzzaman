@@ -1,18 +1,28 @@
 "use client";
 
+
 import { createCertificate } from "@/lib/actions/certificate";
 import React, { useState } from "react";
 
-const Certificates = () => {
+const Certificate = () => {
+
   const [formData, setFormData] = useState({
-    image: "",
-    name: "",
-    organization: "",
-    skills: "",
-    credentialUrl: "",
+    title: "",
+    category: "",
+    shortDescription: "",
     description: "",
-    learnings: "",
     status: "",
+    duration: "",
+    year: "",
+    technologies: "",
+    features: "",
+    image: "",
+    liveUrl: "",
+    clientRepo: "",
+    serverRepo: "",
+    challenges: "",
+    solution: "",
+    learnings: "",
   });
 
   const handleChange =(e) => {
@@ -20,15 +30,16 @@ const Certificates = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleSubmit = async(e) => {
-    e.preventDefault();
    
-
-    const res=await createCertificate(formData)
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await createCertificate(formData);
+
+    console.log("Response:", res);
+  };
   const inputClass =
     "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-all duration-200 placeholder:text-zinc-600 hover:border-white/15 focus:border-orange-500/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(249,115,22,0.06)]";
 
@@ -311,4 +322,4 @@ const Certificates = () => {
   );
 };
 
-export default Certificates;
+export default Certificate;
