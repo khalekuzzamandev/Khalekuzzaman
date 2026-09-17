@@ -1,5 +1,6 @@
 "use client";
 
+import { createCertificate } from "@/lib/actions/certificate";
 import React, { useState } from "react";
 
 const Certificates = () => {
@@ -14,17 +15,18 @@ const Certificates = () => {
     status: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange =(e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+   
 
-    console.log("Certificate Data:", formData);
+    const res=await createCertificate(formData)
   };
 
   const inputClass =

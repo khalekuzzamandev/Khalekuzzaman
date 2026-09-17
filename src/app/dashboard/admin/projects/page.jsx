@@ -1,5 +1,6 @@
 "use client";
 
+import { createProject } from "@/lib/actions/project";
 import React, { useState } from "react";
 
 const Projects = () => {
@@ -29,10 +30,10 @@ const Projects = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    console.log("Project Data:", formData);
+    const res=await createProject(formData)
   };
 
   const inputStyle =
