@@ -1,5 +1,6 @@
 "use client"
 
+import { createSkill } from "@/lib/actions/skill";
 import React, { useState } from "react";
 const Skills = () => {
 
@@ -10,20 +11,22 @@ const Skills = () => {
     description: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = async(e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(formData);
-
     
   };
+  
+
+  // handle sumit and post skill
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const res = await createSkill(formData)
+  };
+
+
 
   return (
     <div className="min-h-screen bg-black p-6 text-white">

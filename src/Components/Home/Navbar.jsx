@@ -125,7 +125,7 @@ const Navbar = () => {
           onClick={() => handleNavClick("home")}
           className="text-2xl font-bold tracking-tight text-white transition duration-300 hover:opacity-90"
         >
-          <span className="text-[#DC2F02]">KM</span>.
+          <span className="text-[#DC2F02]">KM</span>
         </Link>
 
         {/* =========================
@@ -195,13 +195,11 @@ const Navbar = () => {
             className="group flex items-center gap-2 rounded-md bg-[#DC2F02] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#ef3b0a] hover:shadow-[0_0_25px_rgba(220,47,2,0.35)]"
           >
             Hire Me
-
             <ArrowRight
               size={17}
               className="transition-transform duration-300 group-hover:translate-x-1"
             />
           </Link>
-
         </div>
 
         {/* =========================

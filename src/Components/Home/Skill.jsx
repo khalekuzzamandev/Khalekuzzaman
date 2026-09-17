@@ -58,10 +58,8 @@ const topSkills = [
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
       { name: 'React.js', icon: FaReact, color: '#61DAFB' },
       { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-     
     ],
   },
-
   {
     title: 'Backend',
     subtitle: 'Server & API Development',
