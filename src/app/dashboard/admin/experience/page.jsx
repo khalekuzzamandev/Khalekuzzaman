@@ -31,9 +31,9 @@ const Experience = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const createExperience=await createExperience(formData)
-  };
-
+    console.log("Experience Data:", formData);
+    const res=await createExperience(formData)
+  }
   const inputClass =
     "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-all duration-200 placeholder:text-zinc-600 hover:border-white/15 focus:border-orange-500/50 focus:bg-white/[0.05] focus:shadow-[0_0_20px_rgba(249,115,22,0.06)]";
 
