@@ -20,7 +20,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${baseUrl}/api/project/get`);
+        const res = await fetch(`${ baseUrl }/api/project/get`);
 
         if (!res.ok) {
           throw new Error("Failed to fetch projects");
@@ -89,7 +89,6 @@ const Projects = () => {
         </div>
 
         {/* PROJECT GRID */}
-
         {loading ? (
           <div className="flex min-h-[250px] items-center justify-center">
             <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -116,36 +115,50 @@ const Projects = () => {
                 {/* Top Glow */}
                 <div className="absolute -top-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#DC2F02]/10 blur-[70px] opacity-0 transition duration-500 group-hover:opacity-100" />
 
-                {/* Preview */}
+                {/* ========================= */}
+                {/* PROJECT IMAGE / PREVIEW */}
+                {/* ========================= */}
                 <div className="relative h-40 overflow-hidden border-b border-white/[0.08] bg-[#080808]">
                   <div className="absolute inset-3 overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl">
                     {/* Browser Bar */}
-                    <div className="flex h-6 items-center gap-1.5 border-b border-white/10 px-2.5">
+                    <div className="absolute left-0 right-0 top-0 z-20 flex h-6 items-center gap-1.5 border-b border-white/10 bg-black/80 px-2.5 backdrop-blur-sm">
                       <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
                       <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
                       <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
                     </div>
 
-                    {/* Preview */}
-                    <div className="flex h-full items-center justify-center">
-                      <div className="text-center">
-                        <span className="text-5xl font-black tracking-tighter text-white/[0.04]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
+                    {/* Project Image */}
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title || "Project image"}
+                        className="h-full w-full object-cover pt-6 transition duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      /* Fallback when image is not available */
+                      <div className="flex h-full items-center justify-center pt-6">
+                        <div className="text-center">
+                          <span className="text-5xl font-black tracking-tighter text-white/[0.04]">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
 
-                        <p className="mt-[-6px] text-xs font-semibold text-white/40">
-                          {project.title}
-                        </p>
+                          <p className="mt-[-6px] text-xs font-semibold text-white/40">
+                            {project.title}
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#DC2F02]/20 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+                  {/* Image Hover Overlay */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#DC2F02]/25 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                 </div>
 
-                {/* Content */}
+                {/* ========================= */}
+                {/* CONTENT */}
+                {/* ========================= */}
                 <div className="p-5">
+                  {/* Project Number */}
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-[10px] font-semibold tracking-[0.22em] text-[#DC2F02]">
                       PROJECT {String(index + 1).padStart(2, "0")}
@@ -183,7 +196,7 @@ const Projects = () => {
 
                   {/* Buttons */}
                   <div className="mt-5 flex gap-2.5 border-t border-white/[0.08] pt-4">
-                    {/* Live */}
+                    {/* Live Preview */}
                     {project.liveUrl && (
                       <Link
                         href={project.liveUrl}
