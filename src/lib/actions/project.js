@@ -1,5 +1,5 @@
 "use server"
-const baseUrl = process.env.BACKEND_URL
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 // post project
 export const createProject = async (newProject) => {
@@ -12,7 +12,7 @@ export const createProject = async (newProject) => {
 }
 
 // get projects
-export const getProject = async () => {
+export const getProjects = async () => {
   const res = await fetch(`${baseUrl}/api/project/get`)
   return res.json()
 }

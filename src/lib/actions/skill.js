@@ -1,5 +1,5 @@
 "use server"
-const baseUrl = process.env.BACKEND_URL
+const baseUrl = NEXT_PUBLIC_BASE_URL
 
 
 // post new skill

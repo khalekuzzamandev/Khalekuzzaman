@@ -1,41 +1,47 @@
 
 "use client";
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  ExternalLink,
+  Sparkles,
+  Loader2,
+} from "lucide-react";
 import { GiThumbUp } from "react-icons/gi";
 
-const demoProjects = [
-  {
-    id: 1,
-    title: "IdeaVault",
-    description:
-      "A modern startup idea sharing platform where users can explore, publish and manage innovative ideas.",
-    tech: ["Next.js", "Node.js", "MongoDB"],
-    github: "#",
-    live: "#",
-  },
-  {
-    id: 2,
-    title: "Tiles Gallery",
-    description:
-      "A full-stack e-commerce platform featuring product browsing, filtering, authentication and user management.",
-    tech: ["React", "Next.js", "MongoDB"],
-    github: "#",
-    live: "#",
-  },
-  {
-    id: 3,
-    title: "FinEase",
-    description:
-      "A clean personal finance management application for tracking income, expenses and financial activities.",
-    tech: ["React", "Express.js", "MongoDB"],
-    github: "#",
-    live: "#",
-  },
-];
-
 const Projects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch(`${baseUrl}/api/project/get`);
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+
+        const data = await res.json();
+
+        console.log("Projects:", data);
+
+        setProjects(data);
+      } catch (error) {
+        console.error("Project fetch error:", error);
+        setProjects([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, [baseUrl]);
+
   return (
     <section
       id="projects"
@@ -57,16 +63,9 @@ const Projects = () => {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-
-        {/* ===============================
-            HEADER
-        =============================== */}
-
-        <div className="mx-auto mb-8 max-w-5xl text-center py-10">
-
-          {/* One Line Header */}
+        {/* HEADER */}
+        <div className="mx-auto mb-8 max-w-5xl py-10 text-center">
           <div className="mb-3 flex items-center justify-center gap-3">
-
             <span className="h-px w-8 bg-[#DC2F02]" />
 
             <span className="flex items-center gap-1.5 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.3em] text-[#DC2F02]">
@@ -75,14 +74,11 @@ const Projects = () => {
             </span>
 
             <span className="h-px w-8 bg-[#DC2F02]" />
-
           </div>
 
           <h2 className="text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl">
             Things I&apos;ve{" "}
-            <span className="text-[#DC2F02]">
-              built.
-            </span>
+            <span className="text-[#DC2F02]">built.</span>
           </h2>
 
           <p className="mx-auto mt-3 max-w-2xl text-xs leading-5 text-gray-500 md:text-sm">
@@ -90,144 +86,148 @@ const Projects = () => {
             building modern, scalable and user-focused digital
             experiences.
           </p>
-
         </div>
 
-        {/* ===============================
-            PROJECT GRID
-        =============================== */}
+        {/* PROJECT GRID */}
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {loading ? (
+          <div className="flex min-h-[250px] items-center justify-center">
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <Loader2
+                size={18}
+                className="animate-spin text-[#DC2F02]"
+              />
+              Loading projects...
+            </div>
+          </div>
+        ) : projects.length === 0 ? (
+          <div className="flex min-h-[200px] items-center justify-center">
+            <p className="text-sm text-gray-600">
+              No projects found.
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, index) => (
+              <article
+                key={project._id}
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#DC2F02]/40 hover:bg-white/[0.045]"
+              >
+                {/* Top Glow */}
+                <div className="absolute -top-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#DC2F02]/10 blur-[70px] opacity-0 transition duration-500 group-hover:opacity-100" />
 
-          {demoProjects.map((project, index) => (
-            <article
-              key={project.id}
-              className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#DC2F02]/40 hover:bg-white/[0.045]"
-            >
+                {/* Preview */}
+                <div className="relative h-40 overflow-hidden border-b border-white/[0.08] bg-[#080808]">
+                  <div className="absolute inset-3 overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl">
+                    {/* Browser Bar */}
+                    <div className="flex h-6 items-center gap-1.5 border-b border-white/10 px-2.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                    </div>
 
-              {/* Top Glow */}
-              <div className="absolute -top-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#DC2F02]/10 blur-[70px] opacity-0 transition duration-500 group-hover:opacity-100" />
+                    {/* Preview */}
+                    <div className="flex h-full items-center justify-center">
+                      <div className="text-center">
+                        <span className="text-5xl font-black tracking-tighter text-white/[0.04]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
 
-              {/* Preview */}
-              <div className="relative h-40 overflow-hidden border-b border-white/[0.08] bg-[#080808]">
-
-                <div className="absolute inset-3 overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl">
-
-                  {/* Browser Bar */}
-                  <div className="flex h-6 items-center gap-1.5 border-b border-white/10 px-2.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                  </div>
-
-                  {/* Preview */}
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center">
-
-                      <span className="text-5xl font-black tracking-tighter text-white/[0.04]">
-                        0{index + 1}
-                      </span>
-
-                      <p className="mt-[-6px] text-xs font-semibold text-white/40">
-                        {project.title}
-                      </p>
-
+                        <p className="mt-[-6px] text-xs font-semibold text-white/40">
+                          {project.title}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
+                  {/* Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#DC2F02]/20 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                 </div>
 
-                {/* Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#DC2F02]/20 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-
-                <div className="mb-3 flex items-center justify-between">
-
-                  <span className="text-[10px] font-semibold tracking-[0.22em] text-[#DC2F02]">
-                    PROJECT 0{index + 1}
-                  </span>
-
-                  <ArrowUpRight
-                    size={18}
-                    className="text-gray-600 transition duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#DC2F02]"
-                  />
-
-                </div>
-
-                <h3 className="text-xl font-bold tracking-tight transition duration-300 group-hover:text-[#DC2F02]">
-                  {project.title}
-                </h3>
-
-                <p className="mt-3 min-h-[72px] text-xs leading-5 text-gray-500 md:text-sm">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="mt-4 flex flex-wrap gap-1.5">
-
-                  {project.tech.map((technology) => (
-                    <span
-                      key={technology}
-                      className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-gray-400 transition group-hover:border-[#DC2F02]/20"
-                    >
-                      {technology}
+                {/* Content */}
+                <div className="p-5">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-[10px] font-semibold tracking-[0.22em] text-[#DC2F02]">
+                      PROJECT {String(index + 1).padStart(2, "0")}
                     </span>
-                  ))}
 
-                </div>
-
-                {/* Buttons */}
-                <div className="mt-5 flex gap-2.5 border-t border-white/[0.08] pt-4">
-
-                  <Link
-                    href={project.live}
-                    className="group/button flex items-center gap-1.5 rounded-lg bg-[#DC2F02] px-3.5 py-2 text-[11px] font-bold text-white transition hover:bg-[#ef3b0a]"
-                  >
-                    Live Preview
-
-                    <ExternalLink
-                      size={13}
-                      className="transition group-hover/button:translate-x-0.5"
+                    <ArrowUpRight
+                      size={18}
+                      className="text-gray-600 transition duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#DC2F02]"
                     />
-                  </Link>
+                  </div>
 
-                  <Link
-                    href={project.github}
-                    className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[11px] font-bold text-gray-400 transition hover:border-white/20 hover:text-white"
-                  >
-                    <GiThumbUp size={13} />
-                    Source
-                  </Link>
+                  {/* Title */}
+                  <h3 className="text-xl font-bold tracking-tight transition duration-300 group-hover:text-[#DC2F02]">
+                    {project.title}
+                  </h3>
 
+                  {/* Short Description */}
+                  <p className="mt-3 min-h-[72px] text-xs leading-5 text-gray-500 md:text-sm">
+                    {project.shortDescription}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {project.technology
+                      ?.split(",")
+                      .map((technology, techIndex) => (
+                        <span
+                          key={`${ technology } -${ techIndex } `}
+                          className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-gray-400 transition group-hover:border-[#DC2F02]/20"
+                        >
+                          {technology.trim()}
+                        </span>
+                      ))}
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="mt-5 flex gap-2.5 border-t border-white/[0.08] pt-4">
+                    {/* Live */}
+                    {project.liveUrl && (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/button flex items-center gap-1.5 rounded-lg bg-[#DC2F02] px-3.5 py-2 text-[11px] font-bold text-white transition hover:bg-[#ef3b0a]"
+                      >
+                        Live Preview
+
+                        <ExternalLink
+                          size={13}
+                          className="transition group-hover/button:translate-x-0.5"
+                        />
+                      </Link>
+                    )}
+
+                    {/* Source */}
+                    {project.clientRepo && (
+                      <Link
+                        href={project.clientRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[11px] font-bold text-gray-400 transition hover:border-white/20 hover:text-white"
+                      >
+                        <GiThumbUp size={13} />
+                        Source
+                      </Link>
+                    )}
+                  </div>
                 </div>
+              </article>
+            ))}
+          </div>
+        )}
 
-              </div>
-
-            </article>
-          ))}
-
-        </div>
-
-        {/* ===============================
-            FOOTER
-        =============================== */}
-
+        {/* FOOTER */}
         <div className="mt-6 flex items-center justify-center">
-
           <p className="text-[10px] text-gray-600">
             More projects coming soon...
           </p>
-
         </div>
-
       </div>
     </section>
   );
 };
 
 export default Projects;
-
