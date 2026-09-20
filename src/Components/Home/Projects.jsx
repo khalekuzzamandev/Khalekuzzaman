@@ -10,6 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { GiThumbUp } from "react-icons/gi";
+import Image from "next/image";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -20,7 +21,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${ baseUrl }/api/project/get`);
+        const res = await fetch(`${baseUrl}/api/project/get`);
 
         if (!res.ok) {
           throw new Error("Failed to fetch projects");
@@ -47,20 +48,6 @@ const Projects = () => {
       id="projects"
       className="relative overflow-hidden bg-[#050505] px-5 py-12 text-white md:px-10 md:py-16"
     >
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute -left-40 top-0 h-[300px] w-[300px] rounded-full bg-[#DC2F02]/10 blur-[110px]" />
-
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-[350px] w-[350px] rounded-full bg-orange-600/5 blur-[120px]" />
-
-      {/* Grid Background */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* HEADER */}
@@ -112,37 +99,33 @@ const Projects = () => {
                 key={project._id}
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#DC2F02]/40 hover:bg-white/[0.045]"
               >
-                {/* Top Glow */}
-                <div className="absolute -top-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#DC2F02]/10 blur-[70px] opacity-0 transition duration-500 group-hover:opacity-100" />
 
                 {/* ========================= */}
                 {/* PROJECT IMAGE / PREVIEW */}
                 {/* ========================= */}
-                <div className="relative h-40 overflow-hidden border-b border-white/[0.08] bg-[#080808]">
+                <div className="relative h-60 overflow-hidden border-b border-white/[0.08] bg-[#080808]">
                   <div className="absolute inset-3 overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl">
                     {/* Browser Bar */}
-                    <div className="absolute left-0 right-0 top-0 z-20 flex h-6 items-center gap-1.5 border-b border-white/10 bg-black/80 px-2.5 backdrop-blur-sm">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                    </div>
 
                     {/* Project Image */}
                     {project.image ? (
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.title || "Project image"}
-                        className="h-full w-full object-cover pt-6 transition duration-700 group-hover:scale-105"
+                        fill
+                        priority={index < 3}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     ) : (
                       /* Fallback when image is not available */
                       <div className="flex h-full items-center justify-center pt-6">
                         <div className="text-center">
-                          <span className="text-5xl font-black tracking-tighter text-white/[0.04]">
+                          <span className="text-5xl font-black tracking-tighter text-white">
                             {String(index + 1).padStart(2, "0")}
                           </span>
 
-                          <p className="mt-[-6px] text-xs font-semibold text-white/40">
+                          <p className="text-xs font-semibold text-white/40">
                             {project.title}
                           </p>
                         </div>
@@ -150,14 +133,13 @@ const Projects = () => {
                     )}
                   </div>
 
-                  {/* Image Hover Overlay */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#DC2F02]/25 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+            
                 </div>
-
-                {/* ========================= */}
+                
                 {/* CONTENT */}
-                {/* ========================= */}
+             
                 <div className="p-5">
+                  
                   {/* Project Number */}
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-[10px] font-semibold tracking-[0.22em] text-[#DC2F02]">
@@ -176,8 +158,9 @@ const Projects = () => {
                   </h3>
 
                   {/* Short Description */}
-                  <p className="mt-3 min-h-[72px] text-xs leading-5 text-gray-500 md:text-sm">
-                    {project.shortDescription}
+                  <p className="mt-3 min-h-[48px] text-xs leading-5 text-gray-500 md:text-sm">
+                    {project.shortDescription?.split(" ").slice(0,23).join(" ")}
+                    {project.shortDescription?.trim().split(/\s+/).length > 20 ? "..." : ""}
                   </p>
 
                   {/* Technologies */}
@@ -186,7 +169,7 @@ const Projects = () => {
                       ?.split(",")
                       .map((technology, techIndex) => (
                         <span
-                          key={`${ technology } -${ techIndex } `}
+                          key={`${technology} -${techIndex} `}
                           className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-gray-400 transition group-hover:border-[#DC2F02]/20"
                         >
                           {technology.trim()}
@@ -222,7 +205,7 @@ const Projects = () => {
                         className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[11px] font-bold text-gray-400 transition hover:border-white/20 hover:text-white"
                       >
                         <GiThumbUp size={13} />
-                        Source
+                        Details page
                       </Link>
                     )}
                   </div>
