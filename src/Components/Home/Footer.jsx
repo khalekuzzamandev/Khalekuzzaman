@@ -85,8 +85,8 @@ const Foooter = () => {
           className="absolute left-1/2 top-[-180px] h-[400px] w-[650px] -translate-x-1/2 rounded-full bg-orange-500 blur-[140px]"
         />
 
-        <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-orange-600/5 blur-[120px]" />
-        <div className="absolute -right-40 top-20 h-80 w-80 rounded-full bg-orange-500/5 blur-[120px]" />
+        <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-orange-600/14 blur-[120px]" />
+        <div className="absolute -right-40 top-20 h-80 w-80 rounded-full bg-orange-500/15 blur-[120px]" />
 
         <div
           className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:55px_55px]"

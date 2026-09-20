@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -48,6 +47,11 @@ const Projects = () => {
       id="projects"
       className="relative overflow-hidden bg-[#050505] px-5 py-12 text-white md:px-10 md:py-16"
     >
+    
+      {/* ORANGE AI GRID BACKGROUND */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(220,47,2,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(220,47,2,0.7)_1px,transparent_1px)] [background-size:55px_55px]"
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* HEADER */}
@@ -99,7 +103,6 @@ const Projects = () => {
                 key={project._id}
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#DC2F02]/40 hover:bg-white/[0.045]"
               >
-
                 {/* ========================= */}
                 {/* PROJECT IMAGE / PREVIEW */}
                 {/* ========================= */}
@@ -132,14 +135,10 @@ const Projects = () => {
                       </div>
                     )}
                   </div>
-
-            
                 </div>
-                
+
                 {/* CONTENT */}
-             
                 <div className="p-5">
-                  
                   {/* Project Number */}
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-[10px] font-semibold tracking-[0.22em] text-[#DC2F02]">
@@ -159,8 +158,14 @@ const Projects = () => {
 
                   {/* Short Description */}
                   <p className="mt-3 min-h-[48px] text-xs leading-5 text-gray-500 md:text-sm">
-                    {project.shortDescription?.split(" ").slice(0,23).join(" ")}
-                    {project.shortDescription?.trim().split(/\s+/).length > 20 ? "..." : ""}
+                    {project.shortDescription
+                      ?.split(" ")
+                      .slice(0, 23)
+                      .join(" ")}
+                    {project.shortDescription?.trim().split(/\s+/).length >
+                      20
+                      ? "..."
+                      : ""}
                   </p>
 
                   {/* Technologies */}
