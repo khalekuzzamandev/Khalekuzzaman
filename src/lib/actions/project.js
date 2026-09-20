@@ -16,3 +16,9 @@ export const getProjects = async () => {
   const res = await fetch(`${baseUrl}/api/project/get`)
   return res.json()
 }
+
+// get dynamic project
+export const getProjectDetails=async(id)=>{
+  const res=await fetch(`${baseUrl}/api/project/get/${id}`)
+  return res.json()
+}
