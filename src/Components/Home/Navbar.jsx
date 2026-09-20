@@ -12,7 +12,7 @@ import { useSession } from "@/lib/auth-client";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { name: "Home", link: "#home", id: "home" },
+  { name: "Home", link: "/", id: "home" },
   { name: "About", link: "#about", id: "about" },
   { name: "Skills", link: "#skills", id: "skills" },
   { name: "Projects", link: "#projects", id: "projects" },
