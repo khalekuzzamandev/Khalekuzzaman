@@ -45,7 +45,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-[#050505] px-5 py-12 text-white md:px-10 md:py-16"
+      className="relative overflow-hidden bg-[#2b20200c] px-5 py-12 text-white md:px-10 md:py-16"
     >
     
       {/* ORANGE AI GRID BACKGROUND */}

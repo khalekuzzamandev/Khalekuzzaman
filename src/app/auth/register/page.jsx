@@ -292,13 +292,16 @@ const Register = () => {
               </div>
               
 
+             
               {/* FORM */}
               <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  return;
+                }}
                 className="space-y-3.5"
               >
                 {authError && (
-                 
                   <div className="mb-4 flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 py-3 shadow-[0_0_20px_rgba(239,68,68,0.05)]">
                     <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-red-500/10 text-red-500">
                       <CircleAlert size={15} />
@@ -313,12 +316,10 @@ const Register = () => {
                         {authError}
                       </p>
                     </div>
-
-                    </div>
+                  </div>
                 )}
 
                 <div className="grid gap-3 sm:grid-cols-2">
-
                   <InputField
                     id="name"
                     name="name"
@@ -336,12 +337,10 @@ const Register = () => {
                     placeholder="https://..."
                     icon={User}
                   />
-
                 </div>
 
                 {/* Row 2 */}
                 <div className="grid gap-3 sm:grid-cols-2">
-
                   <InputField
                     id="email"
                     name="email"
@@ -354,7 +353,6 @@ const Register = () => {
 
                   {/* Role */}
                   <div>
-
                     <label
                       htmlFor="role"
                       className="mb-1.5 block text-[10px] font-medium text-gray-400"
@@ -363,7 +361,6 @@ const Register = () => {
                     </label>
 
                     <div className="relative">
-
                       <ShieldCheck
                         size={15}
                         className="absolute left-3.5 top-1/2 z-10 -translate-y-1/2 text-[#DC2F02]"
@@ -373,7 +370,8 @@ const Register = () => {
                         id="role"
                         name="role"
                         defaultValue="admin"
-                        className="h-10.5 w-full appearance-none rounded-xl border border-[#DC2F02]/20 bg-black/30 pl-10 pr-8 text-xs font-medium text-[#DC2F02] outline-none"
+                        disabled
+                        className="h-10.5 w-full cursor-not-allowed appearance-none rounded-xl border border-[#DC2F02]/20 bg-black/30 pl-10 pr-8 text-xs font-medium text-[#DC2F02] opacity-60 outline-none"
                       >
                         <option
                           value="admin"
@@ -386,28 +384,19 @@ const Register = () => {
                       <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[8px] text-gray-600">
                         ADMIN
                       </span>
-
                     </div>
-
                   </div>
-
                 </div>
 
                 {/* Password Row */}
                 <div className="grid gap-3 sm:grid-cols-2">
-
                   {/* Password */}
                   <div className="relative">
-
                     <InputField
                       id="password"
                       name="password"
                       label="Password"
-                      type={
-                        showPassword
-                          ? 'text'
-                          : 'password'
-                      }
+                      type={showPassword ? "text" : "password"}
                       placeholder="••••••••"
                       icon={Lock}
                       required
@@ -417,11 +406,7 @@ const Register = () => {
 
                     <button
                       type="button"
-                      onClick={() =>
-                        setShowPassword(
-                          !showPassword
-                        )
-                      }
+                      onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-[29px] text-gray-500 transition hover:text-white"
                     >
                       {showPassword ? (
@@ -430,31 +415,26 @@ const Register = () => {
                         <Eye size={15} />
                       )}
                     </button>
-
                   </div>
 
                   {/* Confirm Password */}
                   <div>
-
                     <div className="relative">
-
                       <InputField
                         id="confirmPassword"
                         name="confirmPassword"
                         label="Confirm Password"
                         type={
                           showConfirmPassword
-                            ? 'text'
-                            : 'password'
+                            ? "text"
+                            : "password"
                         }
                         placeholder="••••••••"
                         icon={Lock}
                         required
                         error={confirmPasswordError}
                         value={confirmPassword}
-                        onChange={
-                          handleConfirmPasswordChange
-                        }
+                        onChange={handleConfirmPasswordChange}
                       />
 
                       <button
@@ -472,7 +452,6 @@ const Register = () => {
                           <Eye size={15} />
                         )}
                       </button>
-
                     </div>
 
                     {/* Error */}
@@ -509,9 +488,7 @@ const Register = () => {
                         Passwords match
                       </motion.p>
                     )}
-
                   </div>
-
                 </div>
 
                 {/* Terms */}
@@ -519,7 +496,6 @@ const Register = () => {
                   htmlFor="terms"
                   className="flex cursor-pointer items-start gap-2 text-[9px] leading-4 text-gray-500"
                 >
-
                   <input
                     id="terms"
                     name="terms"
@@ -530,51 +506,41 @@ const Register = () => {
                   />
 
                   <span>
-                    I agree to the{' '}
+                    I agree to the{" "}
                     <span className="text-[#DC2F02]">
                       Terms & Conditions
-                    </span>{' '}
+                    </span>{" "}
                     and privacy policy.
                   </span>
-
                 </label>
 
-                {/* Submit Button */}
+                {/* Submit Button - DISABLED */}
                 <motion.button
-                  whileHover={{
-                    scale: 1.015,
-                  }}
-                  whileTap={{
-                    scale: 0.98,
-                  }}
                   type="submit"
-                  className="group relative flex h-11 w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#DC2F02] text-xs font-bold shadow-[0_0_25px_rgba(220,47,2,0.18)] transition hover:bg-[#ef3b0a]"
+                  disabled
+                  className="group relative flex h-11 w-full cursor-not-allowed items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#DC2F02]/40 text-xs font-bold text-white opacity-50 shadow-none"
                 >
-
-                  {/* Button Shine */}
-                  <motion.span
-                    animate={{
-                      x: ['-150%', '150%'],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }}
-                    className="absolute inset-y-0 w-20 skew-x-[-20deg] bg-white/10 blur-md"
-                  />
-
                   <span className="relative z-10">
                     Create Admin Account
                   </span>
 
                   <ArrowRight
                     size={15}
-                    className="relative z-10 transition-transform group-hover:translate-x-1"
+                    className="relative z-10"
                   />
-
                 </motion.button>
 
+                {/* Disabled Message */}
+                <div className="flex items-center justify-center gap-1.5 pt-1">
+                  <CircleAlert
+                    size={11}
+                    className="text-red-500"
+                  />
+
+                  <p className="text-[9px] text-gray-500">
+                    Admin account registration is currently disabled.
+                  </p>
+                </div>
               </form>
 
               {/* Login */}
