@@ -38,10 +38,11 @@ const Profile = () => {
   return (
     <div className='bg-white p-2 rounded-xl flex gap-2'>
       {/* image */}
-      <div>
+      <div className="rounded-full overflow-hidden">
         <Image
+          className="rounded-full object-cover"
           src={session?.user?.image || "/default-avatar.png"}
-          alt='user avater image'
+          alt="user avatar image"
           width={50}
           height={50}
         />
