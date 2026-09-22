@@ -30,3 +30,8 @@ export const getDatabaseSkill=async()=>{
   const res = await fetch(`${baseUrl} // get database skill`)
   return res.json()
 }
+// get tools skill
+export const getToolSkill=async()=>{
+  const res = await fetch(`${baseUrl}/api/frontendskill/get`)
+  return res.json()
+}
