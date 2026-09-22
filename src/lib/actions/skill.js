@@ -24,3 +24,9 @@ export const getBackenddSkill=async()=>{
   const res = await fetch(`${baseUrl}/api/backendskill/get`)
   return res.json()
 }
+
+// get database skill
+export const getDatabaseSkill=async()=>{
+  const res = await fetch(`${baseUrl} // get database skill`)
+  return res.json()
+}
