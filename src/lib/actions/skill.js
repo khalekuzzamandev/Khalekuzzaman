@@ -18,3 +18,9 @@ export const getFrontendSkill=async()=>{
   const res =await fetch(`${baseUrl}/api/frontendskill/get`)
   return res.json()
 }
+
+// get backend skill
+export const getBackenddSkill=async()=>{
+  const res = await fetch(`${baseUrl}/api/backendskill/get`)
+  return res.json()
+}
