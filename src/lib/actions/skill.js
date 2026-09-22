@@ -27,7 +27,7 @@ export const getBackenddSkill=async()=>{
 
 // get database skill
 export const getDatabaseSkill=async()=>{
-  const res = await fetch(`${baseUrl} // get database skill`)
+  const res = await fetch(`${baseUrl}/api/databaseskill/get`)
   return res.json()
 }
 // get tools skill
