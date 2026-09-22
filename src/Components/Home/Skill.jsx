@@ -22,9 +22,7 @@ import {
 import {
   SiTypescript,
   SiNextdotjs,
-  SiTailwindcss,
-  SiDaisyui,
-  SiRedux,
+
   SiExpress,
   SiMongodb,
   SiPostgresql,
@@ -39,8 +37,7 @@ import {
   SiYarn,
   SiCloudinary,
   SiGooglefonts,
-  SiReacthookform,
-  SiReactquery,
+
 } from 'react-icons/si';
 
 import TechAnimation from './TechAnimation';
