@@ -71,7 +71,6 @@ const Foooter = () => {
     if (pathName.includes("/dashboard")) {
       return null; // Don't render the Navbar on admin pages
     }
-
   return (
     <footer
       id="footer"
@@ -87,7 +86,6 @@ const Foooter = () => {
 
         <div className="absolute -left-40 bottom-0 h-80 w-80 rounded-full bg-orange-600/14 blur-[120px]" />
         <div className="absolute -right-40 top-20 h-80 w-80 rounded-full bg-orange-500/15 blur-[120px]" />
-
         <div
           className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:55px_55px]"
         />
@@ -106,7 +104,6 @@ const Foooter = () => {
           }}
           className="grid gap-12 py-16 lg:grid-cols-[1.3fr_.7fr_1fr]"
         >
-
           {/* Brand */}
           <motion.div variants={reveal}>
             <Link href="#home" className="group inline-flex items-center gap-3">

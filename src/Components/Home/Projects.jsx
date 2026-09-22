@@ -200,7 +200,6 @@ const Projects = () => {
                         />
                       </Link>
                     )}
-
                     {/* Source */}
                     {project.clientRepo && (
                       <Link
@@ -218,7 +217,6 @@ const Projects = () => {
             ))}
           </div>
         )}
-
         {/* FOOTER */}
         <div className="mt-6 flex items-center justify-center">
           <p className="text-[10px] text-gray-600">
@@ -229,5 +227,4 @@ const Projects = () => {
     </section>
   );
 };
-
 export default Projects;

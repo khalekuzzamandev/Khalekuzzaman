@@ -107,9 +107,7 @@ const Animation = () => {
           />
         </div>
 
-        {/* =====================================================
-            TOP LABEL
-        ====================================================== */}
+        {/* TOP LABEL*/}
 
         <div className="absolute left-0 top-0 flex items-center gap-2 text-[9px] uppercase tracking-[0.32em] text-gray-600">
           <Terminal
