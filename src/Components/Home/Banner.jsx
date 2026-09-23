@@ -21,11 +21,11 @@ import {
 const socials = [
   {
     icon: FaGithub,
-    link: 'https://github.com/muradvcv',
+    link: 'https://github.com/khalekuzzamandev',
   },
   {
     icon: CiLinkedin,
-    link: 'https://www.linkedin.com/in/muradvcv/',
+    link: 'https://www.linkedin.com/in/khalekuzzamandev/',
   },
 ];
 
