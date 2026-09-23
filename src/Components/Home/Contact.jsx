@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#070707] py-24 text-white sm:py-28"
+      className="relative overflow-hidden bg-[#2b20200c] py-24 text-white sm:py-28"
     >
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -18,11 +18,13 @@ const Contact = () => {
 
         <div className="absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-[#DC2F02]/[0.035] blur-[150px]" />
 
-        <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#DC2F02]/[0.02] blur-[140px]" />
+        <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f447083e] blur-[140px]" />
       </div>
 
       {/* Grid Background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-image:linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] [background-size:50px_50px]" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(220,47,2,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(220,47,2,0.7)_1px,transparent_1px)] [background-size:55px_55px]"
+      />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
         {/* =====================================================

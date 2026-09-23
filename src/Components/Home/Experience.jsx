@@ -70,7 +70,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden bg-[#070707] py-24 text-white sm:py-28"
+      className="relative overflow-hidden bg-[##2b20200c] py-24 text-white sm:py-28"
     >
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
