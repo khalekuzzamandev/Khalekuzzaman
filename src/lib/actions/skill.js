@@ -32,6 +32,6 @@ export const getDatabaseSkill=async()=>{
 }
 // get tools skill
 export const getToolSkill=async()=>{
-  const res = await fetch(`${baseUrl}/api/frontendskill/get`)
+  const res = await fetch(`${baseUrl}/api/toolskill/get`)
   return res.json()
 }
