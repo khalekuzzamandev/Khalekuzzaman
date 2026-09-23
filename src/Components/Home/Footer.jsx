@@ -44,9 +44,9 @@ const Foooter = () => {
   ];
 
   const socials = [
-    ['GitHub', 'https://github.com/muradvcv', FaGithub, 'text-white'],
-    ['LinkedIn', 'https://linkedin.com/in/muradvcv', FaLinkedinIn, 'text-[#0A66C2]'],
-    ['Facebook', 'https://facebook.com/', FaFacebookF, 'text-[#1877F2]'],
+    ['GitHub', 'https://github.com/khalekuzzamandev', FaGithub, 'text-white'],
+    ['LinkedIn', 'https://www.linkedin.com/in/khalekuzzamandev', FaLinkedinIn, 'text-[#0A66C2]'],
+    ['Facebook', 'https://www.facebook.com/khalekuzzamanMurad', FaFacebookF, 'text-[#1877F2]'],
     ['Email', 'mailto:muradvcv@gmail.com', MdEmail, 'text-[#EA4335]'],
   ];
 
