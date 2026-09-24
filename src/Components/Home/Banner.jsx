@@ -241,7 +241,8 @@ const Banner = () => {
 
               <Link
                 href="https://drive.google.com/file/d/1MM4e12SmbOQb7YhWtEff8UzE1DK8Mc0x/view?usp=sharing"
-                className="group flex items-center gap-2 rounded bg-[#DC2F02] px-5 py-3 text-sm font-semibold transition hover:bg-[#ef3b0a] hover:shadow-[0_0_25px_rgba(220,47,2,0.3)]"
+                target='_blank'
+                className="group flex items-center gap-2 rounded bg-[#DC2F02] px-5 py-3 text-sm font-semibold transition hover:bg-[#ef3b0a] hover:shadow-[0_0_25px_rgba(220,47,2,0.3)] "
               >
                 View Resume online
 
